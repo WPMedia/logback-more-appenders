@@ -2,9 +2,16 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.washingtonpost</groupId>
 	<artifactId>logback-more-appenders</artifactId>
-	<version>1.1.3-SNAPSHOT</version>
+	<version>1.1.4-SNAPSHOT</version>
 	<name>logback-more-appenders</name>
 	<description>logback appenders.</description>
+
+    <parent>
+        <groupId>com.washingtonpost</groupId>
+        <artifactId>wp-parent-pom</artifactId>
+        <version>1.4.1</version>
+    </parent>
+
 
     <scm>
         <developerConnection>scm:git:git@github.com:WPMedia/logback-more-appenders.git</developerConnection>
