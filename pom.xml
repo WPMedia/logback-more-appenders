@@ -29,7 +29,7 @@
         <version.maven.release.plugin>2.5.2</version.maven.release.plugin>
 	</properties>
 
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 
 	<build>
 		<plugins>
