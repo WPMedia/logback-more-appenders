@@ -2,20 +2,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.washingtonpost</groupId>
 	<artifactId>logback-more-appenders</artifactId>
-	<version>1.1.4-SNAPSHOT</version>
+	<version>1.1.5-SNAPSHOT</version>
 	<name>logback-more-appenders</name>
 	<description>logback appenders.</description>
 
-    <parent>
-        <groupId>com.washingtonpost</groupId>
-        <artifactId>wp-parent-pom</artifactId>
-        <version>1.4.1</version>
-    </parent>
-
-
     <scm>
         <developerConnection>scm:git:git@github.com:WPMedia/logback-more-appenders.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>1.1.4</tag>
     </scm>
 
 
@@ -35,7 +28,7 @@
 		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
 	</properties>
 
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 
 	<build>
 		<plugins>
@@ -105,5 +98,36 @@
 		</dependency>
 
 	</dependencies>
+
+
+    <profiles>
+        <profile>
+            <!--
+            Used only when invoking release:perform so we do not re-run tests as part of the deployment
+            -->
+            <id>release</id>
+            <properties>
+                <maven.test.skip.exec>true</maven.test.skip.exec>
+            </properties>
+        </profile>
+    </profiles>
+
+    <distributionManagement>
+        <repository>
+            <!-- Note that the ~/.m2/settings.xml mappings for repositories that we set usernames/passwords for
+                 are so-called Artifactory "virtual" repositories that facade real local repos and real remote
+                 repos.  You cannot distribute to virtual repositories, which is why we need to explicitly
+                 spell out the trailing "-local" to our repo name (that's an actual local repository), but we can
+                 reuse the username password because they're all the same for any Artifactory repository. -->
+            <id>releases</id>
+            <name>releases</name>
+            <url>https://washingtonpost.artifactoryonline.com/washingtonpost/libs-release-local</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>snapshots</name>
+            <url>https://washingtonpost.artifactoryonline.com/washingtonpost/libs-snapshot-local</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
