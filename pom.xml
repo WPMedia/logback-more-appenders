@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.washingtonpost</groupId>
 	<artifactId>logback-more-appenders</artifactId>
-	<version>1.1.9-SNAPSHOT</version>
+	<version>1.1.10-SNAPSHOT</version>
 	<name>logback-more-appenders</name>
 	<description>logback appenders.</description>
 
@@ -26,6 +26,7 @@
 		<aws.version>1.5.7</aws.version>
 		<jdk.version>1.6</jdk.version>
 		<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+        <version.maven.release.plugin>2.5.2</version.maven.release.plugin>
 	</properties>
 
 	<packaging>pom</packaging>
@@ -65,6 +66,17 @@
 					<target>${jdk.version}</target>
 				</configuration>
 			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>${version.maven.release.plugin}</version>
+                <configuration combine.self="override">
+                    <tagNameFormat>@{project.version}</tagNameFormat>
+                    <goals>deploy</goals>
+                    <indentSize>4</indentSize>
+                    <releaseProfiles>release</releaseProfiles>
+                </configuration>
+            </plugin>
 		</plugins>
 	</build>
 
